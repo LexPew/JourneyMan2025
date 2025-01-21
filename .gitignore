@@ -93,9 +93,3 @@ Plugins/**/Intermediate/*
 # Cache files for the editor to use
 DerivedDataCache/*
 
-# Unreal Engine project files (IF USING SUBDIRECTORY WHICH WE ARE CURRENTLY)
-UnrealProject/Binaries/
-UnrealProject/Intermediate/
-UnrealProject/Saved/
-UnrealProject/DerivedDataCache/
-UnrealProject/Build/

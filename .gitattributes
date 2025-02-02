@@ -1,3 +1,6 @@
+# Normalize EOL for all files that Git considers text files
+* text=auto eol=lf
+
 # Unreal Engine File Types
 
 # 3D Model and Asset Files

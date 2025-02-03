@@ -8,19 +8,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54db8f94-16a7-4b5d-a3a4-c88900749de1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/JourneyMan/AstroCharacter.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/JourneyMan/AstroCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.JourneyMan.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JourneyMan.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_AstroGame.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_AstroGame.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Character/BP_AstroBot.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Character/BP_AstroBot.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Character/Inputs/IMC_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Character/Inputs/IMC_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Character/BP_AstroBot.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Character/C_AccelCurve.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Levels/Level_Default.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Level_Default.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JourneyMan.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/JourneyMan.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DpaMonitoringSettings">
+    <option name="firstShow" value="false" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://C:/Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Classes/GameFramework/Character.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://C:/Program Files/Epic Games/UE_5.4/Engine/Source/Runtime/Engine/Private/Character.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/JourneyMan/AstroCharacter.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/JourneyMan/AstroCharacter.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/JourneyMan/JourneyMan.Build.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -31,20 +43,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Feature/Feature-Movement&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;UnrealLogSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Uproject.JourneyMan.executor": "Run",
+    "git-widget-placeholder": "Feature/Feature-Movement",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "UnrealLogSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="JourneyMan" type="Uproject" factoryName="rider.uproject">
       <configuration_1 setup="1">
@@ -131,6 +144,7 @@
       <workItem from="1738195427757" duration="4478000" />
       <workItem from="1738205377539" duration="2521000" />
       <workItem from="1738252528700" duration="4571000" />
+      <workItem from="1738599273267" duration="9656000" />
     </task>
     <servers />
   </component>

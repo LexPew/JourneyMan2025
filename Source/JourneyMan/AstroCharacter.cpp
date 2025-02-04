@@ -70,9 +70,11 @@ void AAstroCharacter::Jump()
         UE_LOG(LogTemp, Warning, TEXT("Jumping"));
 
         // Check if this is a double jump
-        if (JumpCurrentCount > 0 && GetCharacterMovement()->IsFalling())
+        if (JumpCurrentCount > 0 && !canHover && GetCharacterMovement()->IsFalling())
         {
+            
             UE_LOG(LogTemp, Warning, TEXT("Starting Hovering"));
+            canHover = false;
             bIsHovering = true;
             HoverTimer = 0.0f;
             OnStopHover();
@@ -97,4 +99,10 @@ void AAstroCharacter::StopJumping()
     {
         bIsHovering = false;
     }
+}
+
+void AAstroCharacter::OnLanded()
+{
+    Super::OnLanded();
+    canHover = true;
 }

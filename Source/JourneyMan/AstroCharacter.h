@@ -15,6 +15,8 @@ public:
 	//Hover Variables
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
 	bool bIsHovering{false}; //Whether the player is hovering or not
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
+	bool canHover{false}; //Whether the player is able to hover or not
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
 	float HoverTimer{0.0f}; //How long player has been hovering
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Hovering)
@@ -48,4 +50,5 @@ public:
 	
 	virtual void Jump() override;
 	virtual void StopJumping() override;
+	virtual void OnLanded() overide;
 };

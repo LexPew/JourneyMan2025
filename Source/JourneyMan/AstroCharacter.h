@@ -15,7 +15,7 @@ public:
 	//Hover Variables
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
 	bool bIsHovering{false}; //Whether the player is hovering or not
-		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
 	bool canHover{true}; //Whether the player is able to hover or not
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Hovering)
 	float HoverTimer{0.0f}; //How long player has been hovering

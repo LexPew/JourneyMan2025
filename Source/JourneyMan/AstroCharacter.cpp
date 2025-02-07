@@ -4,13 +4,14 @@
 AAstroCharacter::AAstroCharacter()
 {
     PrimaryActorTick.bCanEverTick = true;
-    canHover = true;
-    bIsHovering = false;
+
 }
 
 void AAstroCharacter::BeginPlay()
 {
     Super::BeginPlay();
+    canHover = true;
+    bIsHovering = false;
 }
 
 void AAstroCharacter::Tick(float DeltaTime)
@@ -69,7 +70,7 @@ void AAstroCharacter::Jump()
     if (!bIsHovering)
     {
         UE_LOG(LogTemp, Warning, TEXT("Jumping"));
-
+        UE_LOG(LogTemp, Warning, TEXT("JumpCount: %d"), canHover );
         // Check if this is a double jump
         if (JumpCurrentCount > 0 && canHover && GetCharacterMovement()->IsFalling())
         {

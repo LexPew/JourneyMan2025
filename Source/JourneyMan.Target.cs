@@ -9,7 +9,7 @@ public class JourneyManTarget : TargetRules
 	{
 		Type = TargetType.Game;
 		DefaultBuildSettings = BuildSettingsVersion.V5;
-//Testing updated 
+//Rebuild 
 		ExtraModuleNames.AddRange( new string[] { "JourneyMan" } );
 	}
 }

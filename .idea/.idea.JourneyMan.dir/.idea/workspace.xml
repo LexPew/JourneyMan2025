@@ -9,8 +9,7 @@
   <component name="ChangeListManager">
     <list default="true" id="54db8f94-16a7-4b5d-a3a4-c88900749de1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.JourneyMan.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.JourneyMan.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Character/BP_Astro.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Character/BP_Astro.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Levels/Level_Default.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Levels/Level_Default.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/JourneyMan.Target.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/JourneyMan.Target.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +140,7 @@
       <workItem from="1738205377539" duration="2521000" />
       <workItem from="1738252528700" duration="4571000" />
       <workItem from="1738599273267" duration="9656000" />
+      <workItem from="1739363727932" duration="593000" />
     </task>
     <servers />
   </component>

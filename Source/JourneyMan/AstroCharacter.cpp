@@ -10,6 +10,8 @@ AAstroCharacter::AAstroCharacter()
 void AAstroCharacter::BeginPlay()
 {
     Super::BeginPlay();
+    canHover = true;
+    bIsHovering = false;
 }
 
 void AAstroCharacter::Tick(float DeltaTime)
@@ -68,11 +70,13 @@ void AAstroCharacter::Jump()
     if (!bIsHovering)
     {
         UE_LOG(LogTemp, Warning, TEXT("Jumping"));
-
+        UE_LOG(LogTemp, Warning, TEXT("JumpCount: %d"), canHover );
         // Check if this is a double jump
-        if (JumpCurrentCount > 0 && GetCharacterMovement()->IsFalling())
+        if (JumpCurrentCount > 0 && canHover && GetCharacterMovement()->IsFalling())
         {
+            
             UE_LOG(LogTemp, Warning, TEXT("Starting Hovering"));
+            canHover = false;
             bIsHovering = true;
             HoverTimer = 0.0f;
             OnStopHover();
@@ -98,3 +102,10 @@ void AAstroCharacter::StopJumping()
         bIsHovering = false;
     }
 }
+
+void AAstroCharacter::Landed(const FHitResult& Hit)
+{
+    Super::Landed(Hit);
+    canHover = true;
+}
+

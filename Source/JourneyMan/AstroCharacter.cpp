@@ -26,7 +26,7 @@ void AAstroCharacter::Tick(float DeltaTime)
         {
             // Stop hovering when the timer expires
             bIsHovering = false;
-            OnStartHover();
+            OnStopHover();
             UE_LOG(LogTemp, Warning, TEXT("Stopped Hovering"));
         }
         else
@@ -79,7 +79,7 @@ void AAstroCharacter::Jump()
             canHover = false;
             bIsHovering = true;
             HoverTimer = 0.0f;
-            OnStopHover();
+            OnStartHover();
             // Set the constant upward velocity for the hover
             FVector NewVelocity = GetCharacterMovement()->Velocity;
             NewVelocity.Z = HoverForce; // Ignore downward momentum
@@ -100,6 +100,7 @@ void AAstroCharacter::StopJumping()
     if (bIsHovering)
     {
         bIsHovering = false;
+        OnStopHover();
     }
 }
 

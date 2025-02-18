@@ -21,7 +21,8 @@ struct FAttackData
 	float Damage = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
-	float AttackDuration = 0.5f;  // Time before next attack can occur
+	float AttackDuration = 0.5f;  // Time before next attack
+
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), BlueprintType, Blueprintable )

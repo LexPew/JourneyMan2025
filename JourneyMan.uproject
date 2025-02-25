@@ -24,6 +24,10 @@
 		{
 			"Name": "RiderLink",
 			"Enabled": false
+		},
+		{
+			"Name": "PCG",
+			"Enabled": true
 		}
 	]
 }

@@ -8,6 +8,13 @@
 #include "Components/ActorComponent.h"
 #include "AC_CombatComponent.generated.h"
 
+UENUM(BlueprintType)
+enum class EHitboxShape : uint8
+{
+	Box		UMETA(DisplayName = "Box"),
+	Sphere  UMETA(DisplayName = "Sphere"),
+	Capsule	UMETA(DisplayName = "Capsule")
+};
 
 USTRUCT(BlueprintType)
 struct FAttackData
@@ -23,6 +30,28 @@ struct FAttackData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
 	float AttackDuration = 0.5f;  // Time before next attack
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
+	EHitboxShape HitboxShape;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
+	FVector HitboxSize;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
+	FVector HitboxOffset;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
+	FRotator HitboxRotation;
+
+	FAttackData()
+		:
+			AttackAnimation(nullptr),
+			HitboxShape(EHitboxShape::Box),
+			HitboxSize(FVector(50.0f,50.0f,50.0f)),
+			HitboxOffset(FVector::ZeroVector),
+			HitboxRotation(FRotator::ZeroRotator)
+		{
+		}
+	
 };
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), BlueprintType, Blueprintable )
@@ -50,6 +79,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat")
 	TArray<FAttackData> ComboChain;  // List of attacks in combo
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat")
 	int32 CurrentAttackIndex;
 	bool bIsAttacking;
 	FTimerHandle AttackTimerHandle;

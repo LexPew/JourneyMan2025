@@ -22,13 +22,13 @@ struct FAttackData
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
-	UAnimMontage* AttackAnimation;
-
+	UAnimSequence* AttackAnimation;
+		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
 	float Damage = 1.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
-	float AttackDuration = 0.5f;  // Time before next attack
+	float AttackDuration = AttackAnimation->GetPlayLength();  // Time before next attack
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
 	EHitboxShape HitboxShape;
@@ -59,6 +59,8 @@ class JOURNEYMAN_API UAC_CombatComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
+	float LastCallTime;
+	
 public:	
 	UAC_CombatComponent();
 
@@ -81,6 +83,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat")
 	int32 CurrentAttackIndex;
+	UPROPERTY(BlueprintReadOnly, Category="Combat")
 	bool bIsAttacking;
 	FTimerHandle AttackTimerHandle;
 

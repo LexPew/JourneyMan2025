@@ -57,6 +57,7 @@ void UAC_CombatComponent::BeginPlay()
 	}
 }
 
+
 void UAC_CombatComponent::StartAttack()
 {
 	UE_LOG(LogTemp, Warning, TEXT("StartAttack() triggered!"));
@@ -68,8 +69,22 @@ void UAC_CombatComponent::StartAttack()
 	}
 
 	bIsAttacking = true;
-	ExecuteAttack();
-	
+
+	float CurrentTime = GetWorld()->GetTimeSeconds();
+
+	if (CurrentTime - LastCallTime <= ComboChain[CurrentAttackIndex].AttackDuration * 2)
+	{
+		ExecuteAttack();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Combo reset: Max input delay exceeded"));
+
+		CurrentAttackIndex = 0;
+		ExecuteAttack();
+	}
+
+	LastCallTime = CurrentTime; // Update the last call time
 }
 
 void UAC_CombatComponent::ExecuteAttack()
@@ -80,12 +95,6 @@ void UAC_CombatComponent::ExecuteAttack()
 	{
 		const FAttackData& CurrentAttack = ComboChain[CurrentAttackIndex];
 		UE_LOG(LogTemp, Warning, TEXT("Attack %d triggered"), CurrentAttackIndex);
-
-		if (CurrentAttack.AttackAnimation)
-		{
-			OwnerCharacter->PlayAnimMontage(CurrentAttack.AttackAnimation);
-
-		}
 
 		GetWorld()->GetTimerManager().SetTimer(AttackTimerHandle, this, &UAC_CombatComponent::ResetAttack, CurrentAttack.AttackDuration, false);
 	}

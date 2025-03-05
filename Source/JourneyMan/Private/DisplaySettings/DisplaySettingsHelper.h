@@ -6,7 +6,7 @@
 #include "Engine/Engine.h"
 #include "GenericPlatform/GenericApplication.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
-#include "Windows/WindowsApplication.h"
+#include "Framework/Application/SlateApplication.h"
 #include "DisplaySettingsHelper.generated.h"
 
 /**
@@ -22,4 +22,15 @@ public:
 	static FText GetDisplayName(int DisplayID = 0);
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	static TArray<FText> GetAllDisplayNames();
+	// Make sure to take the game out of fullscreen before changing!
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	static void MoveGameToDisplay(int32 DisplayID);
+
+	// Debug
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	static void PrintAllDisplayIDs();
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	static void PrintVirtualDisplayRect();
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	static void PrintAllMonitorDisplayRects();
 };

@@ -22,6 +22,8 @@ public:
 	static FText GetDisplayName(int DisplayID = 0);
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	static TArray<FText> GetAllDisplayNames();
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	static FText GetCurrentDisplay();
 	// Make sure to take the game out of fullscreen before changing!
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	static void MoveGameToDisplay(int32 DisplayID);

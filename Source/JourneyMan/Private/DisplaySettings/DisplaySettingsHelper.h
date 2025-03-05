@@ -23,6 +23,7 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	static TArray<FText> GetAllDisplayNames();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	// @TODO Does this work with only 1 monitor?
 	static FText GetCurrentDisplay();
 	// Make sure to take the game out of fullscreen before changing!
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
@@ -35,4 +36,6 @@ public:
 	static void PrintVirtualDisplayRect();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
 	static void PrintAllMonitorDisplayRects();
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	static void PrintScreenPosition();
 };

@@ -42,6 +42,7 @@ FText UDisplaySettingsHelper::GetCurrentDisplay()
 	}
 
 	// Look into using SWindow for GetPositionInScreen() - SWindow 828
+	int32 WindowX = FSlateApplication::Get().GetActiveTopLevelWindow()->GetPositionInScreen().X;
 
 	if (DisplayLocations.Num() > 0)
 	{
@@ -49,11 +50,15 @@ FText UDisplaySettingsHelper::GetCurrentDisplay()
 		{
 			// Check if Window->GetPositionInScreen() < DisplayLocation[i].X
 			// if true - return with DisplayMetrics.MonitorInfo[i-1]
-			// else return with final value once for loop is over?
+			if (WindowX < DisplayLocations[i].X) // @TODO Logic error?
+			{
+				return FText::FromString(DisplayMetrics.MonitorInfo[i-1].Name);
+			}
 		}
+		return FText::FromString(DisplayMetrics.MonitorInfo.Last().Name);
 	}
 
-	return FText::FromString(TEXT("Implement this function!"));
+	return FText::FromString(TEXT("None"));
 }
 
 void UDisplaySettingsHelper::MoveGameToDisplay(int32 DisplayID)
@@ -129,4 +134,12 @@ void UDisplaySettingsHelper::PrintAllMonitorDisplayRects()
 			GEngine->AddOnScreenDebugMessage(-1, 2, FColor::White, FString::Printf(TEXT("Left = %d"), DisplayMetrics.MonitorInfo[i].DisplayRect.Left));
 		}
 	}
+}
+
+void UDisplaySettingsHelper::PrintScreenPosition()
+{
+	FVector2D WindowVec = FSlateApplication::Get().GetActiveTopLevelWindow()->GetPositionInScreen();
+
+	UE_LOG(LogTemp, Log, TEXT("%i, %i"), (int)WindowVec.X, (int)WindowVec.Y);
+	GEngine->AddOnScreenDebugMessage(-1, 2, FColor::White, FString::Printf(TEXT("%i, %i"), (int)WindowVec.X, (int)WindowVec.Y));
 }

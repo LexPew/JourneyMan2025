@@ -9,7 +9,15 @@ FText UDisplaySettingsHelper::GetDisplayName(int DisplayID)
 
 	FDisplayMetrics::RebuildDisplayMetrics(DisplayMetrics);
 
-	return FText::FromString(DisplayMetrics.MonitorInfo[DisplayID].Name);
+	if (DisplayID < DisplayMetrics.MonitorInfo.Num())
+	{
+		return FText::FromString(DisplayMetrics.MonitorInfo[DisplayID].Name);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("DisplaySettings: No monitor found with that ID"))
+		return FText::FromString(TEXT("No monitor found with that ID"));
+	}
 }
 
 TArray<FText> UDisplaySettingsHelper::GetAllDisplayNames()
@@ -28,7 +36,7 @@ TArray<FText> UDisplaySettingsHelper::GetAllDisplayNames()
 	return MonitorNames;
 }
 
-FText UDisplaySettingsHelper::GetCurrentDisplay()
+FText UDisplaySettingsHelper::GetCurrentDisplayName()
 {
 	FDisplayMetrics DisplayMetrics;
 
@@ -41,24 +49,22 @@ FText UDisplaySettingsHelper::GetCurrentDisplay()
 		DisplayLocations.Add(FVector2D(DisplayMetrics.MonitorInfo[i].DisplayRect.Left, DisplayMetrics.MonitorInfo[i].DisplayRect.Top));
 	}
 
-	// Look into using SWindow for GetPositionInScreen() - SWindow 828
 	int32 WindowX = FSlateApplication::Get().GetActiveTopLevelWindow()->GetPositionInScreen().X;
 
-	if (DisplayLocations.Num() > 0)
+	// Find out which display the game window is on
+	if (DisplayLocations.Num() > 1)
 	{
 		for (int i = 1; i < DisplayLocations.Num(); i++)
 		{
-			// Check if Window->GetPositionInScreen() < DisplayLocation[i].X
-			// if true - return with DisplayMetrics.MonitorInfo[i-1]
-			if (WindowX < DisplayLocations[i].X) // @TODO Logic error?
+			// @TODO Flawed in windowed mode. Order the DisplayLocations array first?
+			if (WindowX < (DisplayLocations[i].X + 5)) // Offset because unreal places the window at 3, 0 when in windowed I think
 			{
-				return FText::FromString(DisplayMetrics.MonitorInfo[i-1].Name);
+				return FText::FromString(DisplayMetrics.MonitorInfo[i].Name);
 			}
 		}
-		return FText::FromString(DisplayMetrics.MonitorInfo.Last().Name);
 	}
 
-	return FText::FromString(TEXT("None"));
+	return FText::FromString(DisplayMetrics.MonitorInfo[0].Name);
 }
 
 void UDisplaySettingsHelper::MoveGameToDisplay(int32 DisplayID)
@@ -136,7 +142,7 @@ void UDisplaySettingsHelper::PrintAllMonitorDisplayRects()
 	}
 }
 
-void UDisplaySettingsHelper::PrintScreenPosition()
+void UDisplaySettingsHelper::PrintWindowScreenPosition()
 {
 	FVector2D WindowVec = FSlateApplication::Get().GetActiveTopLevelWindow()->GetPositionInScreen();
 

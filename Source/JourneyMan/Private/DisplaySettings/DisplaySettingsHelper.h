@@ -19,23 +19,29 @@ class JOURNEYMAN_API UDisplaySettingsHelper : public UBlueprintFunctionLibrary
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	// Gets the name of a display at the provided ID
 	static FText GetDisplayName(int DisplayID = 0);
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	// Gets the names of all displays connected
 	static TArray<FText> GetAllDisplayNames();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
-	// @TODO Does this work with only 1 monitor?
-	static FText GetCurrentDisplay();
-	// Make sure to take the game out of fullscreen before changing!
+	// Gets the name of the current display
+	static FText GetCurrentDisplayName();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	// Moves the game window to the display with the given ID
 	static void MoveGameToDisplay(int32 DisplayID);
 
 	// Debug
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	// Prints all display IDs to the screen and to LogTemp
 	static void PrintAllDisplayIDs();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	// Prints the left-most position out of all the displays to the screen and to LogTemp
 	static void PrintVirtualDisplayRect();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
+	// Prints the left position off all the connected monitors to the screen and to LogTemp
 	static void PrintAllMonitorDisplayRects();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")
-	static void PrintScreenPosition();
+	// Prints the top left position of the game window to the screen and to LogTemp
+	static void PrintWindowScreenPosition();
 };

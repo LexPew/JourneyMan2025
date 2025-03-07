@@ -16,13 +16,24 @@ enum class EHitboxShape : uint8
 	Capsule	UMETA(DisplayName = "Capsule")
 };
 
+UENUM(BlueprintType)
+enum class EAttackAnim : uint8
+{
+	DoubleKick	UMETA(DisplayName = "Double Kick"),
+	LeftKick  UMETA(DisplayName = "Left Kick"),
+	LeftUppercut UMETA(DisplayName = "Left Uppercut"),
+	RightHook UMETA(DisplayName = "Right Hook"),
+	RightPunch UMETA(DisplayName = "Right Punch"),
+	RightSlap UMETA(DisplayName = "Right Slap")
+};
+
 USTRUCT(BlueprintType)
 struct FAttackData
 {
 	GENERATED_BODY()
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
-	UAnimMontage* AttackAnimation;
+	EAttackAnim AttackAnimation;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
 	float Damage = 1.0f;
@@ -30,7 +41,7 @@ struct FAttackData
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
 	float AttackDuration = 0.5f;  // Time before next attack
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
+	UPROPERTY(/*EditAnywhere, */BlueprintReadWrite, Category="Attack")
 	EHitboxShape HitboxShape;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Attack")
@@ -44,7 +55,7 @@ struct FAttackData
 
 	FAttackData()
 		:
-			AttackAnimation(nullptr),
+			AttackAnimation(EAttackAnim::RightPunch),
 			HitboxShape(EHitboxShape::Box),
 			HitboxSize(FVector(50.0f,50.0f,50.0f)),
 			HitboxOffset(FVector::ZeroVector),
@@ -58,6 +69,8 @@ UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent), BlueprintType, 
 class JOURNEYMAN_API UAC_CombatComponent : public UActorComponent
 {
 	GENERATED_BODY()
+
+	float LastCallTime;
 
 public:	
 	UAC_CombatComponent();
@@ -81,7 +94,10 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Combat")
 	int32 CurrentAttackIndex;
-	bool bIsAttacking;
+	UPROPERTY(BlueprintReadOnly, Category="Combat")
+	bool bIsAttacking{false};
+	UPROPERTY(BlueprintReadWrite, Category="Combat")
+	bool bAllowNextAttack{true};
 	FTimerHandle AttackTimerHandle;
 
 	//Input 
@@ -90,6 +106,8 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category="Input")
 	UInputMappingContext* CombatMappingContext;
+
+	
 
 public:
 	// Called every frame

@@ -3,3 +3,7 @@
 
 #include "AstroGameUserSettings/AstroGameUserSettings.h"
 
+int32 UAstroGameUserSettings::GetDisplayID() const
+{
+	return DisplayID;
+}

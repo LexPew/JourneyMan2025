@@ -9,9 +9,16 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(config = GameUserSettings, configdonotcheckdefaults, MinimalAPI)
 class UAstroGameUserSettings : public UGameUserSettings
 {
 	GENERATED_BODY()
 	
+public:
+	UPROPERTY(config)
+	int32 DisplayID;
+
+	UFUNCTION(BlueprintCallable)
+	int32 GetDisplayID() const;
+
 };

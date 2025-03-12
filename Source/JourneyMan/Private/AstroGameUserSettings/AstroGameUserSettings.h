@@ -18,7 +18,9 @@ public:
 	UPROPERTY(config)
 	int32 DisplayID;
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
 	int32 GetDisplayID() const;
 
+	UFUNCTION(BlueprintCallable, Category = "Settings")
+	static UAstroGameUserSettings* GetAstroGameUserSettings();
 };

@@ -7,3 +7,8 @@ int32 UAstroGameUserSettings::GetDisplayID() const
 {
 	return DisplayID;
 }
+
+UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
+{
+	return Cast<UAstroGameUserSettings>(GEngine->GetGameUserSettings());
+}

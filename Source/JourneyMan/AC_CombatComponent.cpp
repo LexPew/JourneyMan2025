@@ -71,7 +71,7 @@ void UAC_CombatComponent::StartAttack()
 
 	float CurrentTime = GetWorld()->GetTimeSeconds();
 
-	if (CurrentTime - LastCallTime <= ComboChain[CurrentAttackIndex].AttackDuration * 2)
+	if (CurrentTime - LastCallTime <= 3)
 	{
 		ExecuteAttack();
 	}

@@ -32,24 +32,31 @@ private:
 public:
 	// User-facing
 	// Display
+	// Get the saved DisplayID
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
 	int32 GetDisplayID() const;
+	// Set a new DisplayID
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
 	void SetDisplayID(int32 NewDisplayID);
 	
 	// Control
+	// Get the current mouse sensitivity
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Control")
 	FVector2D GetMouseSensitivity() const;
+	// Set a new mouse sensitivity value
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Control")
 	void SetMouseSensitivity(FVector2D NewMouseSensitivity);
 	
 	// Sound
+	// Get the new master volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	int32 GetMasterVolume() const;
+	// Set a new master volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetMasterVolume(int32 NewMasterVolume);
 
 	// Internal
+	// Gets the game user settings, but cast as this (Make sure this is set as the GameUserSettingsClassName in /Script/Engine.Engine!)
 	UFUNCTION(BlueprintCallable, Category = "Settings")
 	static UAstroGameUserSettings* GetAstroGameUserSettings();
 };

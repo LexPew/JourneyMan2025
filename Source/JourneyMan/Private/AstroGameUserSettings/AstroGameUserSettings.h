@@ -59,4 +59,14 @@ public:
 	// Gets the game user settings, but cast as this (Make sure this is set as the GameUserSettingsClassName in /Script/Engine.Engine!)
 	UFUNCTION(BlueprintCallable, Category = "Settings")
 	static UAstroGameUserSettings* GetAstroGameUserSettings();
+
+	// Sets the current resolution to a new value, but does not set as the last confirmed value. Make sure to use either ConfirmResolution or Revert Resolution!
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	void TestNewResolution(FIntPoint NewResolution);
+	// Sets the current resolution as the last known good one
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	void ConfirmResolution(bool bCheckForCommandLineOverrides);
+	// Sets the current resolution back to the last known good one
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	void RevertResolution(bool bCheckForCommandLineOverrides);
 };

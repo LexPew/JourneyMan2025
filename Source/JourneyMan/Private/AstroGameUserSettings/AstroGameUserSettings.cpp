@@ -37,3 +37,34 @@ UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 {
 	return Cast<UAstroGameUserSettings>(GEngine->GetGameUserSettings());
 }
+
+void UAstroGameUserSettings::TestNewResolution(FIntPoint NewResolution)
+{
+	UAstroGameUserSettings::ResolutionSizeX = NewResolution.X;
+	UAstroGameUserSettings::ResolutionSizeY = NewResolution.Y;
+
+	UAstroGameUserSettings::DesiredScreenWidth = NewResolution.X;
+	UAstroGameUserSettings::DesiredScreenHeight = NewResolution.Y;
+}
+
+void UAstroGameUserSettings::ConfirmResolution(bool bCheckForCommandLineOverrides)
+{
+	UAstroGameUserSettings::LastUserConfirmedResolutionSizeX = UAstroGameUserSettings::ResolutionSizeX;
+	UAstroGameUserSettings::LastUserConfirmedResolutionSizeX = UAstroGameUserSettings:: ResolutionSizeY;
+
+	UAstroGameUserSettings::LastUserConfirmedDesiredScreenWidth = UAstroGameUserSettings::DesiredScreenWidth;
+	UAstroGameUserSettings::LastUserConfirmedDesiredScreenHeight = UAstroGameUserSettings::DesiredScreenHeight;
+
+	ApplyResolutionSettings(bCheckForCommandLineOverrides);
+}
+
+void UAstroGameUserSettings::RevertResolution(bool bCheckForCommandLineOverrides)
+{
+	UAstroGameUserSettings::ResolutionSizeX = UAstroGameUserSettings::LastUserConfirmedResolutionSizeX;
+	UAstroGameUserSettings::ResolutionSizeY = UAstroGameUserSettings::LastUserConfirmedResolutionSizeX;
+
+	UAstroGameUserSettings::DesiredScreenWidth = UAstroGameUserSettings::LastUserConfirmedDesiredScreenWidth;
+	UAstroGameUserSettings::DesiredScreenHeight = UAstroGameUserSettings::LastUserConfirmedDesiredScreenHeight;
+
+	ApplyResolutionSettings(bCheckForCommandLineOverrides);
+}

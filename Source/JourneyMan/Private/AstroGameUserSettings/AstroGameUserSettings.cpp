@@ -33,6 +33,16 @@ void UAstroGameUserSettings::SetMasterVolume(int32 NewMasterVolume)
 	MasterVolume = NewMasterVolume;
 }
 
+int32 UAstroGameUserSettings::GetSoundEffectVolume() const
+{
+	return SoundEffectVolume;
+}
+
+void UAstroGameUserSettings::SetSoundEffectVolume(int32 NewSoundEffectVolume)
+{
+	SoundEffectVolume = NewSoundEffectVolume;
+}
+
 UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 {
 	return Cast<UAstroGameUserSettings>(GEngine->GetGameUserSettings());

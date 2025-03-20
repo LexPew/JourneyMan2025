@@ -26,6 +26,8 @@ private:
 	// Sound
 	UPROPERTY(config)
 	int32 MasterVolume;
+	UPROPERTY(config)
+	int32 SoundEffectVolume;
 
 	// Accessibility
 
@@ -54,6 +56,12 @@ public:
 	// Set a new master volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetMasterVolume(int32 NewMasterVolume);
+	// Get the new sound effect volume level
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	int32 GetSoundEffectVolume() const;
+	// Set a new sound effect volume level
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetSoundEffectVolume(int32 NewSoundEffectVolume);
 
 	// Internal
 	// Gets the game user settings, but cast as this (Make sure this is set as the GameUserSettingsClassName in /Script/Engine.Engine!)

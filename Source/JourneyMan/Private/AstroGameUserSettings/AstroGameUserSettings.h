@@ -28,6 +28,11 @@ private:
 	int32 MasterVolume;
 	UPROPERTY(config)
 	int32 SoundEffectVolume;
+	// Incase I did sound wrong! - Sound might be multiplyer this is just here incase it needed to be treated like that.
+	/*UPROPERTY(config)
+	//float MasterVolume;
+	//UPROPERTY(config)
+	float SoundEffectVolume;*/
 
 	// Accessibility
 
@@ -53,15 +58,23 @@ public:
 	// Get the new master volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	int32 GetMasterVolume() const;
+	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	float GetMasterVolume() const;*/
 	// Set a new master volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetMasterVolume(int32 NewMasterVolume);
+	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetMasterVolume(float NewMasterVolume);*/
 	// Get the new sound effect volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	int32 GetSoundEffectVolume() const;
+	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	float GetSoundEffectVolume() const;*/
 	// Set a new sound effect volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetSoundEffectVolume(int32 NewSoundEffectVolume);
+	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetSoundEffectVolume(float NewSoundEffectVolume);*/
 
 	// Internal
 	// Gets the game user settings, but cast as this (Make sure this is set as the GameUserSettingsClassName in /Script/Engine.Engine!)

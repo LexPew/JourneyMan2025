@@ -28,20 +28,40 @@ int32 UAstroGameUserSettings::GetMasterVolume() const
 	return MasterVolume;
 }
 
+/*float UAstroGameUserSettings::GetMasterVolume() const
+{
+	return MasterVolume;
+}*/
+
 void UAstroGameUserSettings::SetMasterVolume(int32 NewMasterVolume)
 {
 	MasterVolume = NewMasterVolume;
 }
+
+/*void UAstroGameUserSettings::SetMasterVolume(float NewMasterVolume)
+{
+	MasterVolume = NewMasterVolume;
+}*/
 
 int32 UAstroGameUserSettings::GetSoundEffectVolume() const
 {
 	return SoundEffectVolume;
 }
 
+/*float UAstroGameUserSettings::GetSoundEffectVolume() const
+{
+	return SoundEffectVolume;
+}*/
+
 void UAstroGameUserSettings::SetSoundEffectVolume(int32 NewSoundEffectVolume)
 {
 	SoundEffectVolume = NewSoundEffectVolume;
 }
+
+/*void UAstroGameUserSettings::SetSoundEffectVolume(float NewSoundEffectVolume)
+{
+	SoundEffectVolume = NewSoundEffectVolume;
+}*/
 
 UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 {

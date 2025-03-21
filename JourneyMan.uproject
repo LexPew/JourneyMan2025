@@ -24,6 +24,10 @@
 		{
 			"Name": "MediaFrameworkUtilities",
 			"Enabled": true
+		},
+		{
+			"Name": "ElectraCodecs",
+			"Enabled": true
 		}
 	]
 }

@@ -27,11 +27,15 @@ private:
 	UPROPERTY(config)
 	int32 MasterVolume;
 	UPROPERTY(config)
+	int32 MusicVolume;
+	UPROPERTY(config)
 	int32 SoundEffectVolume;
 	// Incase I did sound wrong! - Sound might be multiplyer this is just here incase it needed to be treated like that.
 	/*UPROPERTY(config)
-	//float MasterVolume;
-	//UPROPERTY(config)
+	float MasterVolume;
+	UPROPERTY(config)
+	float MusicVolume;
+	UPROPERTY(config)
 	float SoundEffectVolume;*/
 
 	// Accessibility
@@ -60,16 +64,31 @@ public:
 	int32 GetMasterVolume() const;
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	float GetMasterVolume() const;*/
+
 	// Set a new master volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetMasterVolume(int32 NewMasterVolume);
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetMasterVolume(float NewMasterVolume);*/
+
+	// Get the new music volume
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	int32 GetMusicVolume() const;
+	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	float GetMusicVolume() const;*/
+
+	// Set a new music volume
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetMusicVolume(int32 NewMusicVolume);
+	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetMusicVolume(float NewMusicVolume);*/
+
 	// Get the new sound effect volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	int32 GetSoundEffectVolume() const;
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	float GetSoundEffectVolume() const;*/
+
 	// Set a new sound effect volume level
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
 	void SetSoundEffectVolume(int32 NewSoundEffectVolume);

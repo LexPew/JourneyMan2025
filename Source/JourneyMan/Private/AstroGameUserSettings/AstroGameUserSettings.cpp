@@ -13,6 +13,26 @@ void UAstroGameUserSettings::SetDisplayID(int32 NewDisplayID)
 	DisplayID = NewDisplayID;
 }
 
+int32 UAstroGameUserSettings::GetDisplay() const
+{
+	return Display;
+}
+
+void UAstroGameUserSettings::SetDisplay(int32 NewDisplay)
+{
+	Display = NewDisplay;
+}
+
+int32 UAstroGameUserSettings::GetLastConfirmedDisplay() const
+{
+	return LastConfirmedDisplay;
+}
+
+void UAstroGameUserSettings::SetLastConfirmedDisplay(int32 NewLastConfirmedDisplay)
+{
+	LastConfirmedDisplay = NewLastConfirmedDisplay;
+}
+
 FVector2D UAstroGameUserSettings::GetMouseSensitivity() const
 {
 	return MouseSensitivity;
@@ -86,6 +106,16 @@ void UAstroGameUserSettings::SetSoundEffectVolume(int32 NewSoundEffectVolume)
 UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 {
 	return Cast<UAstroGameUserSettings>(GEngine->GetGameUserSettings());
+}
+
+void UAstroGameUserSettings::ConfirmDisplay()
+{
+	LastConfirmedDisplay = Display;
+}
+
+void UAstroGameUserSettings::RevertDisplay()
+{
+	Display = LastConfirmedDisplay;
 }
 
 void UAstroGameUserSettings::TestNewResolution(FIntPoint NewResolution)

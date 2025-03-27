@@ -16,8 +16,16 @@ class UAstroGameUserSettings : public UGameUserSettings
 
 private:
 	// Display
-	UPROPERTY(config)
+	/* Please use the new CurrentDisplay, and LastConfirmedDisplay so we can rollback like other display settings can*/
+	UPROPERTY(config, meta = (DeprecatedProperty, DeprecationMessage = "Please use Display and LastConfirmedDisplay to store display information!"))
 	int32 DisplayID;
+
+	/* Store current display ID */
+	UPROPERTY(config)
+	int32 Display;
+	/* Store last display ID (May be identical to the current one) - Don't rely on this one to be good */
+	UPROPERTY(config)
+	int32 LastConfirmedDisplay;
 
 	// Control
 	UPROPERTY(config)
@@ -44,12 +52,26 @@ public:
 	// User-facing
 	// Display
 	// Get the saved DisplayID
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display", meta = (DeprecatedFunction, DeprecationMessage = "Please use GetDisplay()"))
 	int32 GetDisplayID() const;
 	// Set a new DisplayID
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display", meta = (DeprecatedFunction, DeprecationMessage = "Please use SetDisplay() with ApplyDisplay()/RevertDisplay()"))
 	void SetDisplayID(int32 NewDisplayID);
 	
+	/* Get the current display */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	int32 GetDisplay() const;
+	/* Set the current display */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	void SetDisplay(int32 NewDisplay);
+
+	/* Get the last confirmed display */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	int32 GetLastConfirmedDisplay() const;
+	/* Set the last confirmed display - Try not to call this directly. Try to use RevertDisplayChange() instead! */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	void SetLastConfirmedDisplay(int32 NewLastConfirmedDisplay);
+
 	// Control
 	// Get the current mouse sensitivity
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Control")
@@ -99,6 +121,13 @@ public:
 	// Gets the game user settings, but cast as this (Make sure this is set as the GameUserSettingsClassName in /Script/Engine.Engine!)
 	UFUNCTION(BlueprintCallable, Category = "Settings")
 	static UAstroGameUserSettings* GetAstroGameUserSettings();
+
+	/* Sets the current resolution as the last known good one. Please apply once this has been called */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	void ConfirmDisplay();
+	/* Sets the current display back to the last known good one. Please apply once this has been called */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	void RevertDisplay();
 
 	// Sets the current resolution to a new value, but does not set as the last confirmed value. Make sure to use either ConfirmResolution or Revert Resolution!
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")

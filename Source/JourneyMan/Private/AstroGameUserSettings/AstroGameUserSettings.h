@@ -122,6 +122,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Settings")
 	static UAstroGameUserSettings* GetAstroGameUserSettings();
 
+	/* Returns true if Display isn't equal to LastConfirmedDisplay */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	bool IsDisplayDirty() const;
 	/* Sets the current resolution as the last known good one. Please apply once this has been called */
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	void ConfirmDisplay();

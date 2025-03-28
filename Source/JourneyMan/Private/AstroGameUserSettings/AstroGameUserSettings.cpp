@@ -108,6 +108,11 @@ UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 	return Cast<UAstroGameUserSettings>(GEngine->GetGameUserSettings());
 }
 
+void UAstroGameUserSettings::ValidateAstroUserSettings()
+{
+	return;
+}
+
 bool UAstroGameUserSettings::IsDisplayDirty() const
 {
 	if (Display != LastConfirmedDisplay)

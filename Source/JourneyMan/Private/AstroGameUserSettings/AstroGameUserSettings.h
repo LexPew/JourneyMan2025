@@ -122,6 +122,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Settings")
 	static UAstroGameUserSettings* GetAstroGameUserSettings();
 
+	/* Call ValidateSettings() as well! This function is only for validating astro-game specific extentions to GameUserSettings! */
+	UFUNCTION(BlueprintCallable, Category = "Settings")
+	void ValidateAstroUserSettings();
+
 	/* Returns true if Display isn't equal to LastConfirmedDisplay */
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	bool IsDisplayDirty() const;

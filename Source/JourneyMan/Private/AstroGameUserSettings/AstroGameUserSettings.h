@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameUserSettings.h"
+#include "DisplaySettings/DisplaySettingsHelper.h"
 #include "AstroGameUserSettings.generated.h"
 
 /**
@@ -20,6 +21,9 @@ private:
 	UPROPERTY(config, meta = (DeprecatedProperty, DeprecationMessage = "Please use Display and LastConfirmedDisplay to store display information!"))
 	int32 DisplayID;
 
+	/* Array of last connected display names to see if displays have changed */
+	UPROPERTY(config)
+	TArray<FText> DisplayNames;
 	/* Store current display ID */
 	UPROPERTY(config)
 	int32 Display;
@@ -58,6 +62,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display", meta = (DeprecatedFunction, DeprecationMessage = "Please use SetDisplay() with ApplyDisplay()/RevertDisplay()"))
 	void SetDisplayID(int32 NewDisplayID);
 	
+	/* Get the currently saved display names array */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	TArray<FText> GetDisplayNames() const;
+	/* Set the currently saved display names array */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
+	void SetDisplayNames(TArray<FText> NewDisplayNames);
+
 	/* Get the current display */
 	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Display")
 	int32 GetDisplay() const;

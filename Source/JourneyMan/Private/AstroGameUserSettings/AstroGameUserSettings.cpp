@@ -13,6 +13,16 @@ void UAstroGameUserSettings::SetDisplayID(int32 NewDisplayID)
 	DisplayID = NewDisplayID;
 }
 
+TArray<FText> UAstroGameUserSettings::GetDisplayNames() const
+{
+	return DisplayNames;
+}
+
+void UAstroGameUserSettings::SetDisplayNames(TArray<FText> NewDisplayNames)
+{
+	DisplayNames = NewDisplayNames;
+}
+
 int32 UAstroGameUserSettings::GetDisplay() const
 {
 	return Display;
@@ -110,6 +120,52 @@ UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 
 void UAstroGameUserSettings::ValidateAstroUserSettings()
 {
+	// Determine if the display settings have changed
+	bool bSettingsChanged = false;
+
+	// If the number of displays is different then there is obviously a change
+	if (DisplayNames.Num() != UDisplaySettingsHelper::GetAllDisplayNames().Num())
+	{
+		bSettingsChanged = true;
+	}
+	// if the above is true then there must be the same number of monitors, so we should compare the names of each one.
+	else
+	{
+		for (int32 i = 0; i < DisplayNames.Num(); i++)
+		{
+			if (!FTextComparison::EqualToCaseIgnored(DisplayNames[i].ToString(), UDisplaySettingsHelper::GetAllDisplayNames()[i].ToString()))
+			{
+				bSettingsChanged = true;
+			}
+		}
+	}
+
+	if (bSettingsChanged)
+	{
+		// Set displays back to the primary display
+		Display = UDisplaySettingsHelper::GetPrimaryDisplayID();
+		LastConfirmedDisplay = UDisplaySettingsHelper::GetPrimaryDisplayID();
+
+		// Set saved resolution to new display's resolution
+		FIntPoint TmpIntPoint = FIntPoint(UDisplaySettingsHelper::GetDisplayMaxResolution(Display));
+		ResolutionSizeX = TmpIntPoint.X;
+		ResolutionSizeY = TmpIntPoint.Y;
+		DesiredScreenWidth = TmpIntPoint.X;
+		DesiredScreenHeight = TmpIntPoint.Y;
+		LastUserConfirmedResolutionSizeX = TmpIntPoint.X;
+		LastUserConfirmedResolutionSizeY = TmpIntPoint.Y;
+		LastUserConfirmedDesiredScreenWidth = TmpIntPoint.X;
+		LastUserConfirmedDesiredScreenHeight = TmpIntPoint.Y;
+
+		ApplyResolutionSettings(true);
+	}
+
+	// What if the user intentionally set the resolution to be lower than the max resolution?
+	/*if (FIntPoint(ResolutionSizeX, ResolutionSizeY) == UDisplaySettingsHelper::GetCurrentDisplayResolution(Display))
+	{
+
+	}*/
+
 	return;
 }
 

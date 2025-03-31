@@ -30,6 +30,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	// Moves the game window to the display with the given ID
 	static void MoveGameToDisplay(int32 DisplayID);
+	// Gets the max resolution of the display with the given displayID
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	static FIntPoint GetDisplayMaxResolution(int32 DisplayID);
+	// Gets the primary monitor's ID
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	static int32 GetPrimaryDisplayID();
 
 	// Debug
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")

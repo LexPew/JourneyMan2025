@@ -97,6 +97,49 @@ void UDisplaySettingsHelper::MoveGameToDisplay(int32 DisplayID)
 
 }
 
+FIntPoint UDisplaySettingsHelper::GetDisplayMaxResolution(int32 DisplayID)
+{
+	if (GEngine)
+	{
+		FDisplayMetrics DisplayMetrics;
+
+		FDisplayMetrics::RebuildDisplayMetrics(DisplayMetrics);
+
+		// Return early if DisplayID is invalid
+		if (!DisplayMetrics.MonitorInfo.IsValidIndex(DisplayID))
+		{
+			return FIntPoint();
+		}
+
+		return DisplayMetrics.MonitorInfo[DisplayID].MaxResolution;
+	}
+
+	UE_LOG(LogTemp, Warning, TEXT("GEngine not valid!"));
+	return FIntPoint();
+}
+
+int32 UDisplaySettingsHelper::GetPrimaryDisplayID()
+{
+	if (GEngine)
+	{
+		FDisplayMetrics DisplayMetrics;
+
+		FDisplayMetrics::RebuildDisplayMetrics(DisplayMetrics);
+
+		for (int32 i = 0; i < DisplayMetrics.MonitorInfo.Num(); i++)
+		{
+			if (DisplayMetrics.MonitorInfo[i].bIsPrimary)
+			{
+				return i;
+			}
+		}
+	}
+
+	// Log and return 0 if no primary display found.
+	UE_LOG(LogTemp, Warning, TEXT("No primary display found... Using monitor 0 as the primary display."))
+	return 0;
+}
+
 void UDisplaySettingsHelper::PrintAllDisplayIDs()
 {
 	if (GEngine)

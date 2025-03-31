@@ -36,6 +36,22 @@ TArray<FText> UDisplaySettingsHelper::GetAllDisplayNames()
 	return MonitorNames;
 }
 
+TArray<FText> UDisplaySettingsHelper::GetAllDisplayNamesPure()
+{
+	FDisplayMetrics DisplayMetrics;
+
+	FDisplayMetrics::RebuildDisplayMetrics(DisplayMetrics);
+
+	TArray<FText> MonitorNames;
+
+	for (int i = 0; i < DisplayMetrics.MonitorInfo.Num(); i++)
+	{
+		MonitorNames.Add(FText::FromString(DisplayMetrics.MonitorInfo[i].Name));
+	}
+
+	return MonitorNames;
+}
+
 FText UDisplaySettingsHelper::GetCurrentDisplayName()
 {
 	FDisplayMetrics DisplayMetrics;

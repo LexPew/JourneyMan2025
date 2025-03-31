@@ -21,9 +21,12 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	// Gets the name of a display at the provided ID
 	static FText GetDisplayName(int DisplayID = 0);
-	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display", meta = (DeprecatedFunction, DeprecationMessage = "Please use GetAllDisplayNamesPure instead"))
 	// Gets the names of all displays connected
 	static TArray<FText> GetAllDisplayNames();
+	/* Pure version of GetAllDisplayNames */
+	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "Settings|Display")
+	static TArray<FText> GetAllDisplayNamesPure();
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	// Gets the name of the current display
 	static FText GetCurrentDisplayName();

@@ -121,6 +121,12 @@ UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 void UAstroGameUserSettings::ValidateAstroUserSettings()
 {
 	// Determine if the display settings have changed
+	if (DisplayNames.Num() == 0)
+	{
+		UE_LOG(LogTemp, Log, TEXT("No Displays in DispayName array."))
+		return;
+	}
+	
 	bool bSettingsChanged = false;
 
 	// If the number of displays is different then there is obviously a change

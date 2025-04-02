@@ -199,31 +199,31 @@ void UAstroGameUserSettings::RevertDisplay()
 
 void UAstroGameUserSettings::TestNewResolution(FIntPoint NewResolution)
 {
-	UAstroGameUserSettings::ResolutionSizeX = NewResolution.X;
-	UAstroGameUserSettings::ResolutionSizeY = NewResolution.Y;
+	ResolutionSizeX = NewResolution.X;
+	ResolutionSizeY = NewResolution.Y;
 
-	UAstroGameUserSettings::DesiredScreenWidth = NewResolution.X;
-	UAstroGameUserSettings::DesiredScreenHeight = NewResolution.Y;
+	DesiredScreenWidth = NewResolution.X;
+	DesiredScreenHeight = NewResolution.Y;
 }
 
 void UAstroGameUserSettings::ConfirmResolution(bool bCheckForCommandLineOverrides)
 {
-	UAstroGameUserSettings::LastUserConfirmedResolutionSizeX = UAstroGameUserSettings::ResolutionSizeX;
-	UAstroGameUserSettings::LastUserConfirmedResolutionSizeY = UAstroGameUserSettings:: ResolutionSizeY;
+	LastUserConfirmedResolutionSizeX = ResolutionSizeX;
+	LastUserConfirmedResolutionSizeY = ResolutionSizeY;
 
-	UAstroGameUserSettings::LastUserConfirmedDesiredScreenWidth = UAstroGameUserSettings::DesiredScreenWidth;
-	UAstroGameUserSettings::LastUserConfirmedDesiredScreenHeight = UAstroGameUserSettings::DesiredScreenHeight;
+	LastUserConfirmedDesiredScreenWidth = DesiredScreenWidth;
+	LastUserConfirmedDesiredScreenHeight = DesiredScreenHeight;
 
 	ApplyResolutionSettings(bCheckForCommandLineOverrides);
 }
 
 void UAstroGameUserSettings::RevertResolution(bool bCheckForCommandLineOverrides)
 {
-	UAstroGameUserSettings::ResolutionSizeX = UAstroGameUserSettings::LastUserConfirmedResolutionSizeX;
-	UAstroGameUserSettings::ResolutionSizeY = UAstroGameUserSettings::LastUserConfirmedResolutionSizeY;
+	ResolutionSizeX = LastUserConfirmedResolutionSizeX;
+	ResolutionSizeY = LastUserConfirmedResolutionSizeY;
 
-	UAstroGameUserSettings::DesiredScreenWidth = UAstroGameUserSettings::LastUserConfirmedDesiredScreenWidth;
-	UAstroGameUserSettings::DesiredScreenHeight = UAstroGameUserSettings::LastUserConfirmedDesiredScreenHeight;
+	DesiredScreenWidth = LastUserConfirmedDesiredScreenWidth;
+	DesiredScreenHeight = LastUserConfirmedDesiredScreenHeight;
 
 	ApplyResolutionSettings(bCheckForCommandLineOverrides);
 }

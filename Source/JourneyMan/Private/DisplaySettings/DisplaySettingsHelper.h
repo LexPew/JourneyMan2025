@@ -39,6 +39,9 @@ public:
 	// Gets the primary monitor's ID
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
 	static int32 GetPrimaryDisplayID();
+	/* Move a windowed window to the centre of a display */
+	UFUNCTION(BlueprintCallable, Category = "Settings|Display")
+	static void MoveWindowedWindowToCentre(int32 DisplayID, FIntPoint WindowDimensions);
 
 	// Debug
 	UFUNCTION(BlueprintCallable, Category = "Settings|Display|Debug")

@@ -156,6 +156,20 @@ int32 UDisplaySettingsHelper::GetPrimaryDisplayID()
 	return 0;
 }
 
+void UDisplaySettingsHelper::MoveWindowedWindowToCentre(int32 DisplayID, FIntPoint WindowDimensions)
+{
+	FDisplayMetrics DisplayMetrics;
+
+	FDisplayMetrics::RebuildDisplayMetrics(DisplayMetrics);
+
+	TSharedPtr<FGenericWindow> Window = FSlateApplication::Get().GetActiveTopLevelWindow()->GetNativeWindow();
+
+	if (Window)
+	{
+		Window->MoveWindowTo((DisplayMetrics.MonitorInfo[DisplayID].NativeWidth / 2) - (WindowDimensions.X / 2), (DisplayMetrics.MonitorInfo[DisplayID].NativeHeight / 2) - (WindowDimensions.Y / 2));
+	}
+}
+
 void UDisplaySettingsHelper::PrintAllDisplayIDs()
 {
 	if (GEngine)

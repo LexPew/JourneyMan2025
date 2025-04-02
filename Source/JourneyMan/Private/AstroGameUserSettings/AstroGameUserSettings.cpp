@@ -209,7 +209,7 @@ void UAstroGameUserSettings::TestNewResolution(FIntPoint NewResolution)
 void UAstroGameUserSettings::ConfirmResolution(bool bCheckForCommandLineOverrides)
 {
 	UAstroGameUserSettings::LastUserConfirmedResolutionSizeX = UAstroGameUserSettings::ResolutionSizeX;
-	UAstroGameUserSettings::LastUserConfirmedResolutionSizeX = UAstroGameUserSettings:: ResolutionSizeY;
+	UAstroGameUserSettings::LastUserConfirmedResolutionSizeY = UAstroGameUserSettings:: ResolutionSizeY;
 
 	UAstroGameUserSettings::LastUserConfirmedDesiredScreenWidth = UAstroGameUserSettings::DesiredScreenWidth;
 	UAstroGameUserSettings::LastUserConfirmedDesiredScreenHeight = UAstroGameUserSettings::DesiredScreenHeight;
@@ -220,7 +220,7 @@ void UAstroGameUserSettings::ConfirmResolution(bool bCheckForCommandLineOverride
 void UAstroGameUserSettings::RevertResolution(bool bCheckForCommandLineOverrides)
 {
 	UAstroGameUserSettings::ResolutionSizeX = UAstroGameUserSettings::LastUserConfirmedResolutionSizeX;
-	UAstroGameUserSettings::ResolutionSizeY = UAstroGameUserSettings::LastUserConfirmedResolutionSizeX;
+	UAstroGameUserSettings::ResolutionSizeY = UAstroGameUserSettings::LastUserConfirmedResolutionSizeY;
 
 	UAstroGameUserSettings::DesiredScreenWidth = UAstroGameUserSettings::LastUserConfirmedDesiredScreenWidth;
 	UAstroGameUserSettings::DesiredScreenHeight = UAstroGameUserSettings::LastUserConfirmedDesiredScreenHeight;

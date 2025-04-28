@@ -50,7 +50,7 @@ Theres not much to say about the mapping context and the input action. They're b
 
 ### Main Menu UI
 
-###### *The logic begind loading/creating new saves has been moved into the SaveTemplate blueprint (Content/UI/SaveMisc/WBP_SaveTemlplate). Please view the [Save System Documentation](SaveSystemDocumentation.md) to learn how loading and creating new saves works.*
+###### *The logic begind loading/creating new saves has been moved into the SaveTemplate blueprint (Content/UI/SaveMisc/WBP_SaveTemplate). Please view the [Save System Documentation](SaveSystemDocumentation.md) to learn how loading and creating new saves works.*
 
 The Main Menu Widget Blueprint (Content/UI/WBP_MainMenu) has 3 sections. The "Press Any Button" Overlay, the Saves List, and the bottom right buttons.
 

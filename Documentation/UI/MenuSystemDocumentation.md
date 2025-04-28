@@ -6,10 +6,10 @@ This documentation contains information about how individual menus work, and how
 ## Contents
 
 1. [Main Menu](#main-menu)
-    1. [Main Menu Level]
-    2. [Main Menu UI]
+    1. [Main Menu Level](#main-menu-level)
+    2. [Main Menu UI](#main-menu-ui)
 2. [Pause Menu](#pause-menu)
-    1. [Pause Actor Component]
+    1. [Pause Actor Component](#pause-actor-component)
 3. [Settings Menu](#settings-menu)
     1. [Display Settings](#display-settings)
     2. [Control Settings](#control-settings)
@@ -49,6 +49,10 @@ Theres not much to say about the mapping context and the input action. They're b
 ## Pause Menu
 
 <!-- How do we activate the pause menu etc -->
+
+### Pause Actor Component
+
+<!-- What we did to ensure it isn't affected by the pause -->
 
 ## Settings Menu
 

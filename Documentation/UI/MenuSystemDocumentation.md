@@ -50,6 +50,24 @@ Theres not much to say about the mapping context and the input action. They're b
 
 ### Main Menu UI
 
+###### *The logic begind loading/creating new saves has been moved into the SaveTemplate blueprint (Content/UI/SaveMisc/WBP_SaveTemlplate). Please view the [Save System Documentation](SaveSystemDocumentation.md) to learn how loading and creating new saves works.*
+
+The Main Menu Widget Blueprint (Content/UI/WBP_MainMenu) has 3 sections. The "Press Any Button" Overlay, the Saves List, and the bottom right buttons.
+
+When we construct the Main Menu UI, we set the PAB overlay to be visible, we hide the Saves Canval Panel to be hidden, we bind a new event to ClosePABOverlay, and we set the input mode to be game only.
+
+![The Main Menu UI Construct event](Images/MainMenu7.png)
+
+The Settings button in the bottom right works by hiding the Main Menu UI and creating a new Settings Widget to display instead. You can read more about the Settings Menu blueprint [here](#settings-menu). We bind an event called OnSettingsClosed so we can unhide the Main Menu when the Settings get closed.
+
+![Opening the Settings Menu, and dealing with when it closes](Images/MainMenu8.png)
+
+The Quit button just calls quit game. This button should be removed when we are targeting platforms that don't support it.
+
+<!-- Move this to the bottom? -->
+The PAB overlay is a canvas pannel (and should probably be renamed PAB Canvas for clarity) which hides the saves list and bottom right buttons until the player presses any button. We saw earlier that the input event just calls a function on the MainMenu Widget. All that function does it check if the PAB overlay is visible. If it is then hide the overlay, make the Saves Canvas Panel visible (which also contains the buttons), and lock the mouse curser in when in fullscreen.
+
+![The event that closes the PAB overlay](Images/MainMenu6.png)
 
 ## Pause Menu
 

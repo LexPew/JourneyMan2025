@@ -53,65 +53,65 @@ void UAstroGameUserSettings::SetMouseSensitivity(FVector2D NewMouseSensitivity)
 	MouseSensitivity = NewMouseSensitivity;
 }
 
-int32 UAstroGameUserSettings::GetMasterVolume() const
-{
-	return MasterVolume;
-}
-
-/*float UAstroGameUserSettings::GetMasterVolume() const
+/*int32 UAstroGameUserSettings::GetMasterVolume() const
 {
 	return MasterVolume;
 }*/
 
-void UAstroGameUserSettings::SetMasterVolume(int32 NewMasterVolume)
+float UAstroGameUserSettings::GetMasterVolume() const
+{
+	return MasterVolume;
+}
+
+/*void UAstroGameUserSettings::SetMasterVolume(int32 NewMasterVolume)
+{
+	MasterVolume = NewMasterVolume;
+}*/
+
+void UAstroGameUserSettings::SetMasterVolume(float NewMasterVolume)
 {
 	MasterVolume = NewMasterVolume;
 }
 
-/*void UAstroGameUserSettings::SetMasterVolume(float NewMasterVolume)
-{
-	MasterVolume = NewMasterVolume;
-}*/
-
-int32 UAstroGameUserSettings::GetMusicVolume() const
-{
-	return MusicVolume;
-}
-
-/*float UAstroGameUserSettings::GetMusicVolume() const
+/*int32 UAstroGameUserSettings::GetMusicVolume() const
 {
 	return MusicVolume;
 }*/
 
-void UAstroGameUserSettings::SetMusicVolume(int32 NewMusicVolume)
+float UAstroGameUserSettings::GetMusicVolume() const
+{
+	return MusicVolume;
+}
+
+/*void UAstroGameUserSettings::SetMusicVolume(int32 NewMusicVolume)
+{
+	MusicVolume = NewMusicVolume;
+}*/
+
+void UAstroGameUserSettings::SetMusicVolume(float NewMusicVolume)
 {
 	MusicVolume = NewMusicVolume;
 }
 
-/*void UAstroGameUserSettings::SetMusicVolume(float NewMusicVolume)
-{
-	MusicVolume = NewMusicVolume;
-}*/
-
-int32 UAstroGameUserSettings::GetSoundEffectVolume() const
-{
-	return SoundEffectVolume;
-}
-
-/*float UAstroGameUserSettings::GetSoundEffectVolume() const
+/*int32 UAstroGameUserSettings::GetSoundEffectVolume() const
 {
 	return SoundEffectVolume;
 }*/
 
-void UAstroGameUserSettings::SetSoundEffectVolume(int32 NewSoundEffectVolume)
+float UAstroGameUserSettings::GetSoundEffectVolume() const
 {
-	SoundEffectVolume = NewSoundEffectVolume;
+	return SoundEffectVolume;
 }
 
-/*void UAstroGameUserSettings::SetSoundEffectVolume(float NewSoundEffectVolume)
+/*void UAstroGameUserSettings::SetSoundEffectVolume(int32 NewSoundEffectVolume)
 {
 	SoundEffectVolume = NewSoundEffectVolume;
 }*/
+
+void UAstroGameUserSettings::SetSoundEffectVolume(float NewSoundEffectVolume)
+{
+	SoundEffectVolume = NewSoundEffectVolume;
+}
 
 UAstroGameUserSettings* UAstroGameUserSettings::GetAstroGameUserSettings()
 {

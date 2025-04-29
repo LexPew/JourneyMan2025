@@ -36,19 +36,21 @@ private:
 	FVector2D MouseSensitivity;
 
 	// Sound
-	UPROPERTY(config)
+	// This treats sound like its min 0 max 100
+	/*UPROPERTY(config)
 	int32 MasterVolume;
 	UPROPERTY(config)
 	int32 MusicVolume;
 	UPROPERTY(config)
-	int32 SoundEffectVolume;
+	int32 SoundEffectVolume;*/
 	// Incase I did sound wrong! - Sound might be multiplyer this is just here incase it needed to be treated like that.
-	/*UPROPERTY(config)
+	// ... The music is far too loud lets try treating it as a multiplyer instead
+	UPROPERTY(config)
 	float MasterVolume;
 	UPROPERTY(config)
 	float MusicVolume;
 	UPROPERTY(config)
-	float SoundEffectVolume;*/
+	float SoundEffectVolume;
 
 	// Accessibility
 
@@ -93,40 +95,40 @@ public:
 	
 	// Sound
 	// Get the new master volume level
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	int32 GetMasterVolume() const;
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	float GetMasterVolume() const;*/
+	int32 GetMasterVolume() const;*/
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	float GetMasterVolume() const;
 
 	// Set a new master volume level
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	void SetMasterVolume(int32 NewMasterVolume);
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	void SetMasterVolume(float NewMasterVolume);*/
+	void SetMasterVolume(int32 NewMasterVolume);*/
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetMasterVolume(float NewMasterVolume);
 
 	// Get the new music volume
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	int32 GetMusicVolume() const;
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	float GetMusicVolume() const;*/
+	int32 GetMusicVolume() const;*/
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	float GetMusicVolume() const;
 
 	// Set a new music volume
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	void SetMusicVolume(int32 NewMusicVolume);
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	void SetMusicVolume(float NewMusicVolume);*/
+	void SetMusicVolume(int32 NewMusicVolume);*/
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetMusicVolume(float NewMusicVolume);
 
 	// Get the new sound effect volume level
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	int32 GetSoundEffectVolume() const;
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	float GetSoundEffectVolume() const;*/
+	int32 GetSoundEffectVolume() const;*/
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	float GetSoundEffectVolume() const;
 
 	// Set a new sound effect volume level
-	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	void SetSoundEffectVolume(int32 NewSoundEffectVolume);
 	/*UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
-	void SetSoundEffectVolume(float NewSoundEffectVolume);*/
+	void SetSoundEffectVolume(int32 NewSoundEffectVolume);*/
+	UFUNCTION(BlueprintCallable, Category = "Settings|Config|Sound")
+	void SetSoundEffectVolume(float NewSoundEffectVolume);
 
 	// Internal
 	// Gets the game user settings, but cast as this (Make sure this is set as the GameUserSettingsClassName in /Script/Engine.Engine!)

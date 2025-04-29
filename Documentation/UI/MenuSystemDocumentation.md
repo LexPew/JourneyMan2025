@@ -71,15 +71,22 @@ The PAB overlay is a canvas pannel (and should probably be renamed PAB Canvas fo
 
 ## Pause Menu
 
+The pause menu can be accessed by pressing the escape key. While playing in the editor and not using the standalone build, you can access the pause menu by pressing 'P'.
+
 <!-- How do we activate the pause menu etc -->
 
 ### Pause Actor Component
+
+AC_Pause should be attatched to the player character. AC_Pause needs to be allowed to tick while paused. AC_Pause has 2 variables you might want to modify. It has its own input mapping context, and input action. We use these to open/close the UI.
 
 <!-- What we did to ensure it isn't affected by the pause -->
 
 ## Settings Menu
 
 <!-- Container for submenus -->
+The settings menu is just a container to display sub-settings, such as display settings.
+
+<!-- Handles the application of settings sometimes -->
 
 ### Display Settings
 
